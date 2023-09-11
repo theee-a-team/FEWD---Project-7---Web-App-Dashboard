@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <title>Dashboard</title>
+</head>
+
+<body id="grid-container">
+    <header>
+        <h1><strong>Web</strong>App&trade;</h1>
+        <div id="bell-div">
+            <svg id="notify" xmlns="http://www.w3.org/2000/svg" width="20" viewBox="5 -3 20 35">
+                <title>notifications</title>
+                <path id="bell" d="M24 18v-8c0-5.5-4.5-10-10-10S4 4.5 4 10v8l-4 8h9.1c.5 2.3 2.5 4 4.9 
+                4s4.4-1.7 4.9-4H28l-4-8zM14 28c-1.3 0-2.4-.8-2.8-2h5.6c-.4 1.2-1.5 2-2.8 2zM3 
+                24l3-6v-8c0-4.4 3.6-8 8-8s8 3.6 8 8v8l3 6H3z" fill="#fff"/>
+            </svg>
+            <div id="notifications">
+            </div>
+        </div>
+        <img id="user-avatar" src="images/keanu.jpg" alt="John Wick profile picture">
+        <h3>John Wick</h3>
+    </header>
+
+    <nav>
+        <a href="#"><img src="images/svgs/home.svg" alt="Link to Home"></a>
+        <a href="#traffic"><img src="images/svgs/bar-chart.svg" alt="Link to Traffic"></a>
+        <a href="#members"><img src="images/svgs/members.svg" alt="Link to Members"></a>
+        <a href="#settings"><img src="images/svgs/settings.svg" alt="Link to Settings"></a>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <main>
+        <div class="dashboard-header">
+            <h2 class="headline">Dashboard</h2>
+            <div class="tab"></div>
+        </div>
+        <!-- alert banner -->
+        <div class="alert" id="alert" ></div>
+
+        <!-- Traffic -->
+        <section class="traffic b-m" id="traffic">
+            <div class="traffic-header">
+                <h3>Traffic</h3>
+                <ul class="traffic-nav">
+                    <li class="traffic-nav-link">Hourly</li>
+                    <li class="traffic-nav-link">Daily</li>
+                    <li class="traffic-nav-link active">Weekly</li>
+                    <li class="traffic-nav-link">Monthly</li>
+                </ul>
+            </div>
+            <div class="widget-container-full">
+                <canvas id="traffic-chart"></canvas>
+            </div>
+        </section>
+
+        <!-- Daily Traffic -->
+        <section class="daily-traffic b-m b-r">
+            <h3>Daily Traffic</h3>
+            <div class="widget-container-half">
+                <canvas id="daily-chart"></canvas>
+            </div>
+        </section>
+
+        <!-- Mobile Users -->
+        <section class="mobile-users b-m">
+            <h3>Mobile Users</h3>
+            <div class="widget-container-half">
+                <canvas id="mobile-users"></canvas>
+            </div>
+        </section>
+
+        <!-- Social Stats -->
+        <section class="social b-m">
+            <h3>Social Stats</h3>
+            <div id="socials">
+                <div class="social-container">
+                    <div class="social-image">
+                        <svg class="svg-social" viewBox="-8 -8 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M23.998 12c0-6.628-5.372-12-11.999-12C5.372 0 0 5.372 0 12c0 5.988 4.388 10.952 10.124 11.852v-8.384H7.078v-3.469h3.046V9.356c0-3.008 1.792-4.669 4.532-4.669 1.313 0 2.686.234 2.686.234v2.953H15.83c-1.49 0-1.955.925-1.955 1.874V12h3.328l-.532 3.469h-2.796v8.384c5.736-.9 10.124-5.864 10.124-11.853z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <p>Facebook</p>
+                        <p class="social-number">10,320</p>
+                    </div>
+                </div>
+                <div class="social-container">
+                    <div class="social-image">
+                        <svg class="svg-social" viewBox="-8 -8 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913a5.885 5.885 0 001.384 2.126A5.868 5.868 0 004.14 23.37c.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558a5.898 5.898 0 002.126-1.384 5.86 5.86 0 001.384-2.126c.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913a5.89 5.89 0 00-1.384-2.126A5.847 5.847 0 0019.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227a3.81 3.81 0 01-.899 1.382 3.744 3.744 0 01-1.38.896c-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421a3.716 3.716 0 01-1.379-.899 3.644 3.644 0 01-.9-1.38c-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 01-2.88 0 1.44 1.44 0 012.88 0z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <p>Instagram</p>
+                        <p class="social-number">16,445</p>
+                    </div>
+                </div>
+                <div class="social-container">
+                    <div class="social-image">
+                        <svg class="svg-social" viewBox="-8 -8 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M23.954 4.569a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.691 8.094 4.066 6.13 1.64 3.161a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.061a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <p>Twitter</p>
+                        <p class="social-number">22,189</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Members -->
+        <section id="members" class="members b-m b-r flex-members">
+            <h3>New Members</h3>
+            <div class="members-container">
+                <img src="images/member-1.jpg" class="profile-image" alt="profile picture">
+                <div class="members-text">
+                    <p>Victoria Chambers</p>
+                    <a class="email" href="mailto:victoria.chambers80@example.com">victoria.chambers80@example.com</a>
+                </div>
+                <p class="extra">10/15/20</p>
+            </div>
+            <hr>
+            <div class="members-container">
+                <img src="images/member-2.jpg" class="profile-image" alt="profile picture">
+                <div class="members-text">
+                    <p>Dale Byrd</p>
+                    <a class="email" href="mailto:dale.byrd52@example.com">dale.byrd52@example.com</a>
+                </div>
+                <p class="extra">10/15/20</p>
+            </div>
+            <hr>
+            <div class="members-container">
+                <img src="images/member-3.jpg" class="profile-image" alt="profile picture">
+                <div class="members-text">
+                    <p>Dawn Wood</p>
+                    <a class="email" href="mailto:dawn.wood60@example.com">dawn.wood60@example.com</a>
+                </div>
+                <p class="extra">10/15/20</p>
+            </div>
+            <hr>
+            <div class="members-container">
+                <img src="images/member-4.jpg" class="profile-image" alt="profile picture">
+                <div class="members-text">
+                    <p>Dan Olivier</p>
+                    <a class="email" href="mailto:dan.oliver82@example.com">dan.oliver82@example.com</a>
+                </div>
+                <p class="extra">10/15/20</p>
+            </div>
+        </section>    
+
+        <!-- Recent Activity -->
+        <section class="recent-activity b-m flex-members">
+            <h3>Recent Activity</h3>
+                <div class="members-container">
+                    <img src="images/member-1.jpg" class="profile-image" alt="profile picture">
+                    <div class="members-text">
+                        <p>Victoria Chambers commented on <strong>WebApp's SEO Tips</strong></p>
+                        <p>4 hours ago</p>
+                    </div>
+                    <a href="#" class="media-link extra">></a>
+                </div>
+                <hr>
+                <div class="members-container">
+                    <img src="images/member-2.jpg" class="profile-image" alt="profile picture">
+                    <div class="members-text">
+                        <p>Dale Byrd liked the post <strong>Facebook's Changes for 2021</strong></p>
+                        <p class="time">5 hours ago</p>
+                    </div>
+                    <a href="#" class="media-link extra">></a>
+                </div>
+                <hr>
+                <div class="members-container">
+                    <img src="images/member-3.jpg" class="profile-image" alt="profile picture">
+                    <div class="members-text">
+                        <p>Dawn Wood commented on <strong>Facebook's Changes for 2021</strong></p>
+                        <p class="time">5 hours ago</p>
+                    </div>
+                    <a href="#" class="media-link extra">></a>
+                </div>
+                <hr>
+                <div class="members-container">
+                    <img src="images/member-4.jpg" class="profile-image" alt="profile picture">
+                    <div class="members-text">
+                        <p>Dan Oliver posted <strong>WebApp's SEO Tips</strong></p>
+                        <p class="time">1 day ago</p>
+                    </div>
+                    <a href="#" class="media-link extra">></a>
+                </div>
+        </section>
+
+        <!-- Messsage User -->
+        <section class="message b-r">
+            <h3>Message User</h3>
+            <form class="widget-container">
+                <input type="text" placeholder="Search for User" class="form-field" id="userField">
+                <textarea placeholder="Message for User" class="form-area" id= "messageField" ></textarea>
+                <button class="button-primary" id="send">Send</button>
+            </form>
+        </section>
+
+        <!-- Settings -->
+        <section class="settings" id="settings">
+            <h3>Settings</h3>
+                <div class="setting-switch">
+                    <p>Send Email Notifications</p>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round" data-on="ON" data-off="OFF">&nbsp;&nbsp;&nbsp;ON</span>
+                    </label>
+                </div>
+                <div class="setting-switch">
+                    <p>Set Profile to Public</p>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round">&nbsp;&nbsp;&nbsp;ON</span>
+                    </label>
+                </div>
+            <select class="form-field" id="timezone">
+                <option disabled selected>Select Timezone</option>
+                <option>(GMT-10:00) Hawaii</option>
+                <option>(GMT-09:00) Alaska</option>
+                <option>(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                <option>(GMT-07:00) Arizona</option>
+                <option>(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                <option>(GMT-06:00) Central Time (US &amp; Canada)</option>
+                <option>(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                <option>(GMT-05:00) Indiana (East)</option>
+                <option>(GMT-11:00) International Date Line West</option>
+                <option>(GMT-11:00) Midway Island</option>
+                <option>(GMT-11:00) Samoa</option>
+                <option>(GMT-08:00) Tijuana</option>
+                <option>(GMT-07:00) Chihuahua</option>
+                <option>(GMT-07:00) Mazatlan</option>
+                <option>(GMT-06:00) Central America</option>
+                <option>(GMT-06:00) Mexico City</option>
+                <option>(GMT-05:00) Bogota</option>
+                <option>(GMT-04:30) Caracas</option>
+                <option>(GMT-04:00) Atlantic Time (Canada)</option>
+                <option>(GMT-04:00) La Paz</option>
+                <option>(GMT-03:30) Newfoundland</option>
+                <option>(GMT-03:00) Buenos Aires</option>
+                <option>(GMT-03:00) Greenland</option>
+                <option>(GMT-02:00) Mid-Atlantic</option>
+                <option>(GMT-01:00) Azores</option>
+                <option>(GMT) London</option>
+                <option>(GMT+01:00) Amsterdam</option>
+                <option>(GMT+01:00) Berlin</option>
+                <option>(GMT+01:00) Bratislava</option>
+                <option>(GMT+01:00) Rome</option>
+                <option>(GMT+01:00) Stockholm</option>
+                <option>(GMT+01:00) Vienna</option>
+                <option>(GMT+02:00) Jerusalem</option>
+                <option>(GMT+02:00) Kyiv</option>
+                <option>(GMT+02:00) Minsk</option>
+                <option>(GMT+02:00) Pretoria</option>
+                <option>(GMT+03:00) Baghdad</option>
+                <option>(GMT+03:00) Kuwait</option>
+                <option>(GMT+03:00) Moscow</option>
+                <option>(GMT+03:00) St. Petersburg</option>
+                <option>(GMT+03:00) Volgograd</option>
+                <option>(GMT+03:30) Tehran</option>
+                <option>(GMT+04:00) Abu Dhabi</option>
+                <option>(GMT+04:00) Yerevan</option>
+                <option>(GMT+04:30) Kabul</option>
+                <option>(GMT+05:00) Islamabad</option>
+                <option>(GMT+05:00) Karachi</option>
+                <option>(GMT+05:30) Kolkata</option>
+                <option>(GMT+05:30) Mumbai</option>
+                <option>(GMT+05:30) New Delhi</option>
+                <option>(GMT+06:00) Almaty</option>
+                <option>(GMT+07:00) Bangkok</option>
+                <option>(GMT+07:00) Hanoi</option>
+                <option>(GMT+07:00) Jakarta</option>
+                <option>(GMT+08:00) Beijing</option>
+                <option>(GMT+08:00) Hong Kong</option>
+                <option>(GMT+08:00) Kuala Lumpur</option>
+                <option>(GMT+08:00) Perth</option>
+                <option>(GMT+08:00) Singapore</option>
+                <option>(GMT+08:00) Taipei</option>
+                <option>(GMT+08:00) Ulaan Bataar</option>
+                <option>(GMT+09:00) Osaka</option>
+                <option>(GMT+09:00) Seoul</option>
+                <option>(GMT+09:00) Tokyo</option>
+                <option>(GMT+09:30) Adelaide</option>
+                <option>(GMT+09:30) Darwin</option>
+                <option>(GMT+10:00) Guam</option>
+                <option>(GMT+10:00) Melbourne</option>
+                <option>(GMT+10:00) Sydney</option>
+                <option>(GMT+10:00) Vladivostok</option>
+                <option>(GMT+11:00) Magadan</option>
+                <option>(GMT+11:00) Solomon Is.</option>
+                <option>(GMT+12:00) Auckland</option>
+                <option>(GMT+12:00) Fiji</option>
+                <option>(GMT+12:00) Marshall Is.</option>
+                <option>(GMT+13:00) Nuku'alofa</option>
+
+            </select>
+            <div class="settings-button" >
+                <button class="button-primary save-cancel" id="save">Save</button>
+                <button class="button-disabled save-cancel" id="cancel">Cancel</button>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
